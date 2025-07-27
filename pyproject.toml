@@ -1,0 +1,47 @@
+# Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+#
+# NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+# property and proprietary rights in and to this material, related
+# documentation and any modifications thereto. Any use, reproduction,
+# disclosure or distribution of this material and related documentation
+# without an express license agreement from NVIDIA CORPORATION or
+# its affiliates is strictly prohibited.
+
+[project]
+name = "cuTAMP"
+version = "0.0.1"
+description = "cuTAMP"
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["robotics"]
+authors = []
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+
+dependencies = [
+    "einops",
+    "jaxtyping",
+    "omegaconf",
+    "open3d",
+    "rerun-sdk",
+    "roma",
+    "tqdm",
+    "trimesh",
+    "yourdfpy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+]
+
+[tool.ruff]
+line-length = 120
+exclude = ["cutamp/robots/assets"]
+
+[project.scripts]
+cutamp-demo = "cutamp.scripts.run_cutamp:entrypoint"
+
+[tool.setuptools.packages]
+find = { include = ["cutamp", "cutamp.*"] }

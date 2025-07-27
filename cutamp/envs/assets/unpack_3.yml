@@ -1,0 +1,46 @@
+# Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+#
+# NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+# property and proprietary rights in and to this material, related
+# documentation and any modifications thereto. Any use, reproduction,
+# disclosure or distribution of this material and related documentation
+# without an express license agreement from NVIDIA CORPORATION or
+# its affiliates is strictly prohibited.
+
+name: unpack_3
+geometries:
+  cuboid:
+    # Movables
+    block_blue:
+      color: [0.0, 0.0, 1.0]
+      dims: [0.04, 0.04, 0.15]
+      pose: [0.3, -0.2, 0.085, 1.0, 0.0, 0.0, 0.0]
+    block_red:
+      color: [1.0, 0.0, 0.0]
+      dims: [0.04, 0.04, 0.1]
+      pose: [0.28, -0.15, 0.06, 1.0, 0.0, 0.0, 0.0]
+    block_green:
+      color: [0.0, 1.0, 0.0]
+      dims: [0.04, 0.04, 0.05]
+      pose: [0.331, -0.15, 0.035, 1.0, 0.0, 0.0, 0.0]
+
+    # Statics
+    floor:
+      color: [0.5, 0.5, 0.5, 1.0]
+      dims: [1.0, 1.0, 0.01]
+      pose: [0.0, 0.0, -0.005, 1.0, 0.0, 0.0, 0.0]
+    goal:
+      color: [0.0, 0.5, 0.0, 1.0]
+      dims: [0.12, 0.12, 0.01]
+      pose: [0.45, 0.0, 0.005, 1.0, 0.0, 0.0, 0.0]
+
+types:
+  Movable: [block_blue, block_red, block_green]
+  Surface: [floor, goal]
+
+goal:
+  # "On" needs to be in quotes because it's a YAML keyword
+  - "On": [block_blue, goal]
+  - "On": [block_red, goal]
+  - "On": [block_green, goal]
+  - HandEmpty: []
